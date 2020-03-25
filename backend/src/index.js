@@ -4,7 +4,7 @@ const app = express();
 const routes = require('./routes');
 
 
-app.use(cors());
+app.use(cors()); //aplicativo para segurança
 app.use(express.json()); //faz a aplicação reconhecer objetos Json
 app.use(routes);
 /**
