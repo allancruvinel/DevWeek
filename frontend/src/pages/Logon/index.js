@@ -10,12 +10,17 @@ import api from '../../services/api';
 
 export default function Logon(){
     const [id,setId] = useState('');
+    const history = useHistory();
 
     async function handleLogin(e){
         e.preventDefault();
         try{
             const responde = await api.post('sessions',{id});
-            console.log(responde.data.name);
+            
+
+            localStorage.setItem('ongId',id);
+            localStorage.setItem('ongName',responde.data.name);
+            history.push('/profile');
         }
         catch(err){
             alert('Falha no Login, tente novamente');
